@@ -17,3 +17,4 @@ require_once ESTATEIN_THEME_DIR . '/inc/setup.php';
 require_once ESTATEIN_THEME_DIR . '/inc/customizer.php';
 require_once ESTATEIN_THEME_DIR . '/inc/property-shortcode.php';
 require_once ESTATEIN_THEME_DIR . '/inc/content-shortcodes.php';
+require_once ESTATEIN_THEME_DIR . '/inc/properties-page-shortcodes.php';

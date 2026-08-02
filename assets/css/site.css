@@ -255,13 +255,16 @@ input {
 }
 
 .estatein-main,
-.estatein-home {
+.estatein-home,
+.estatein-properties-page {
 	overflow: clip;
 }
 
 /* Elementor containers ship with 10px padding and a 20px gap by default. */
 .estatein-home.e-con,
-.estatein-home .e-con {
+.estatein-home .e-con,
+.estatein-properties-page-content.e-con,
+.estatein-properties-page-content .e-con {
 	padding: 0;
 	gap: 0;
 }
@@ -279,6 +282,7 @@ input {
 }
 
 .estatein-home .elementor-button,
+.estatein-final-cta .elementor-button,
 .estatein-button {
 	min-height: 60px;
 	display: inline-flex;
@@ -297,12 +301,14 @@ input {
 }
 
 .estatein-home .estatein-primary-button .elementor-button,
+.estatein-final-cta .estatein-primary-button .elementor-button,
 .estatein-button-primary {
 	border-color: var(--estatein-purple-60);
 	background: var(--estatein-purple-60);
 }
 
 .estatein-home .elementor-button:hover,
+.estatein-final-cta .elementor-button:hover,
 .estatein-button:hover {
 	transform: translateY(-2px);
 	border-color: var(--estatein-purple-65);
@@ -896,7 +902,13 @@ p.estatein-person-location {
 .estatein-final-cta p {
 	max-width: 1150px;
 	margin: 0;
+	color: var(--estatein-grey-60);
 	font-size: 18px;
+}
+
+.estatein-sitewide-cta-template,
+.estatein-sitewide-cta-template > .elementor-widget-container {
+	width: 100%;
 }
 
 .estatein-site-footer {
@@ -1622,5 +1634,565 @@ p.estatein-person-location {
 		transition-duration: .01ms !important;
 		animation-duration: .01ms !important;
 		animation-iteration-count: 1 !important;
+	}
+}
+
+/* Properties Page */
+.estatein-properties-page,
+.estatein-properties-page-content {
+	background: var(--estatein-grey-08);
+}
+
+.estatein-properties-hero {
+	padding: clamp(70px, 7vw, 150px) clamp(32px, 8.4vw, 162px) clamp(100px, 9vw, 180px) !important;
+	border-bottom: var(--estatein-border);
+	background:
+		radial-gradient(circle at 15% 20%, rgba(112, 59, 247, .09), transparent 28%),
+		linear-gradient(118deg, var(--estatein-grey-15), var(--estatein-grey-08) 52%);
+}
+
+.estatein-properties-hero-shell,
+.estatein-property-page-shell {
+	width: min(var(--estatein-container), 100%);
+	margin-inline: auto;
+}
+
+.estatein-properties-hero .elementor-heading-title {
+	margin: 0 0 14px;
+	font-size: clamp(42px, 3.1vw, 60px);
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -.025em;
+}
+
+.estatein-properties-hero-copy p {
+	max-width: 1350px;
+	margin: 0;
+	color: var(--estatein-grey-60);
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+.estatein-property-search-section {
+	position: relative;
+	z-index: 3;
+	margin-top: -92px;
+	padding: 0 clamp(32px, 8.4vw, 162px) !important;
+}
+
+.estatein-property-search-main {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 12px;
+	width: min(1300px, calc(100% - 180px));
+	margin: 0 auto;
+	padding: 20px 20px 20px 32px;
+	border: 10px solid var(--estatein-grey-10);
+	border-radius: 12px 12px 0 0;
+	background: var(--estatein-grey-08);
+	box-shadow: 0 0 0 1px var(--estatein-grey-15);
+}
+
+.estatein-property-search input,
+.estatein-property-search select {
+	width: 100%;
+	min-width: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--estatein-white);
+	font: inherit;
+}
+
+.estatein-property-search-main input {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.estatein-property-search-main input::placeholder {
+	color: var(--estatein-grey-60);
+}
+
+.estatein-property-search-main .estatein-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 72px;
+	padding-inline: 28px;
+	border: 0;
+	cursor: default;
+}
+
+.estatein-search-icon {
+	position: relative;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+}
+
+.estatein-search-icon::after {
+	content: "";
+	position: absolute;
+	right: -6px;
+	bottom: -4px;
+	width: 8px;
+	height: 2px;
+	background: currentColor;
+	transform: rotate(45deg);
+}
+
+.estatein-property-search-filters {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 20px;
+	padding: 20px;
+	border: var(--estatein-border);
+	border-radius: 12px;
+	background: var(--estatein-grey-10);
+}
+
+.estatein-property-filter {
+	position: relative;
+	display: grid;
+	grid-template-columns: 24px minmax(0, 1fr);
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+	min-height: 64px;
+	padding: 0 18px;
+	border: var(--estatein-border);
+	border-radius: 10px;
+	background: var(--estatein-grey-08);
+}
+
+.estatein-property-filter::after {
+	content: "";
+	position: absolute;
+	right: 18px;
+	width: 8px;
+	height: 8px;
+	border-right: 2px solid var(--estatein-grey-60);
+	border-bottom: 2px solid var(--estatein-grey-60);
+	transform: translateY(-2px) rotate(45deg);
+	pointer-events: none;
+}
+
+.estatein-property-filter-icon {
+	display: grid;
+	place-items: center;
+	width: 22px;
+	height: 22px;
+	color: var(--estatein-white);
+}
+
+.estatein-property-filter-icon svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.estatein-property-filter select {
+	position: relative;
+	z-index: 1;
+	appearance: none;
+	padding-right: 26px;
+	color: var(--estatein-grey-60);
+	font-size: clamp(13px, 1.1vw, 16px);
+	cursor: default;
+}
+
+.estatein-properties-listing {
+	padding-top: var(--estatein-section-space) !important;
+}
+
+.estatein-properties-listing .estatein-section-header,
+.estatein-inquiry-section .estatein-section-header {
+	grid-template-columns: 1fr;
+}
+
+.estatein-property-archive-track {
+	display: flex;
+	gap: 30px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.estatein-property-archive-track::-webkit-scrollbar {
+	display: none;
+}
+
+.estatein-property-archive-card .estatein-property-tagline {
+	display: inline-flex;
+	margin: 0 0 16px;
+	padding: 8px 14px;
+	border: var(--estatein-border);
+	border-radius: 999px;
+	background: var(--estatein-grey-10);
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.estatein-property-archive-card .estatein-property-description {
+	margin-bottom: 30px;
+}
+
+.estatein-inquiry-section {
+	padding-bottom: 0 !important;
+}
+
+.estatein-inquiry-section .elementor-heading-title {
+	margin: 0 0 14px;
+	font-size: clamp(38px, 2.5vw, 48px);
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -.025em;
+}
+
+.estatein-inquiry-section .estatein-section-copy .elementor-widget-text-editor p {
+	max-width: 1240px;
+	margin: 0;
+	color: var(--estatein-grey-60);
+	font-size: 18px;
+}
+
+.estatein-inquiry-form {
+	padding: 100px;
+	border: var(--estatein-border);
+	border-radius: var(--estatein-radius-md);
+	background: var(--estatein-grey-08);
+}
+
+.estatein-inquiry-form .wpcf7-form {
+	margin: 0;
+}
+
+.estatein-inquiry-form .wpcf7-form p {
+	margin: 0;
+}
+
+.estatein-inquiry-fields {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 50px 30px;
+}
+
+.estatein-inquiry-field {
+	min-width: 0;
+}
+
+.estatein-inquiry-field > p {
+	height: 100%;
+}
+
+.estatein-inquiry-field-wide {
+	grid-column: span 2;
+}
+
+.estatein-inquiry-field-full {
+	grid-column: 1 / -1;
+}
+
+.estatein-inquiry-field > label,
+.estatein-inquiry-field > p > label {
+	display: block;
+	margin-bottom: 12px;
+	color: var(--estatein-white);
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.estatein-inquiry-field .wpcf7-form-control-wrap {
+	display: block;
+	width: 100%;
+}
+
+.estatein-inquiry-form input[type="text"],
+.estatein-inquiry-form input[type="email"],
+.estatein-inquiry-form input[type="tel"],
+.estatein-inquiry-form select,
+.estatein-inquiry-form textarea {
+	width: 100%;
+	min-height: 60px;
+	padding: 16px 20px;
+	border: var(--estatein-border);
+	border-radius: 8px;
+	outline: 0;
+	background: #0f0f0f;
+	color: var(--estatein-white);
+	font: inherit;
+	transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.estatein-inquiry-form textarea {
+	height: 150px;
+	min-height: 150px;
+	resize: vertical;
+}
+
+.estatein-inquiry-form input:focus,
+.estatein-inquiry-form select:focus,
+.estatein-inquiry-form textarea:focus {
+	border-color: var(--estatein-purple-60);
+	box-shadow: 0 0 0 3px rgba(112, 59, 247, .18);
+}
+
+.estatein-inquiry-form input::placeholder,
+.estatein-inquiry-form textarea::placeholder,
+.estatein-inquiry-form select {
+	color: var(--estatein-grey-60);
+}
+
+.estatein-contact-detail input {
+	padding-left: 52px !important;
+	background-position: 20px center !important;
+	background-repeat: no-repeat !important;
+	background-size: 20px !important;
+}
+
+.estatein-contact-detail-phone input {
+	background-image: url("../icons/phone.svg") !important;
+}
+
+.estatein-contact-detail-email input {
+	background-image: url("../icons/email.svg") !important;
+}
+
+.estatein-inquiry-submit-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	margin-top: 30px;
+}
+
+.estatein-inquiry-submit-row > p {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	width: 100%;
+	margin: 0;
+}
+
+.estatein-inquiry-submit-row .wpcf7-acceptance label {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	color: var(--estatein-grey-60);
+}
+
+.estatein-inquiry-submit-row .wpcf7-acceptance input {
+	width: 20px;
+	height: 20px;
+	accent-color: var(--estatein-purple-60);
+}
+
+.estatein-inquiry-submit-row .wpcf7-list-item-label {
+	font-size: 16px;
+}
+
+.estatein-inquiry-submit-row a {
+	color: var(--estatein-grey-60);
+	text-decoration: underline;
+}
+
+.estatein-inquiry-submit-row input[type="submit"] {
+	min-height: 60px;
+	padding: 16px 34px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--estatein-purple-60);
+	color: var(--estatein-white);
+	font: inherit;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.estatein-inquiry-form .wpcf7-spinner {
+	position: absolute;
+}
+
+@media (max-width: 1440px) {
+	.estatein-property-search-main {
+		width: min(1100px, calc(100% - 120px));
+	}
+
+	.estatein-property-search-filters {
+		gap: 10px;
+		padding: 10px;
+	}
+
+	.estatein-property-filter {
+		gap: 8px;
+		padding-inline: 12px;
+	}
+
+	.estatein-property-filter::after {
+		right: 12px;
+	}
+
+	.estatein-inquiry-form {
+		padding: 60px;
+	}
+
+	.estatein-inquiry-fields {
+		gap: 32px 30px;
+	}
+
+	.estatein-inquiry-section .estatein-section-copy .elementor-widget-text-editor p {
+		font-size: 16px;
+	}
+
+	.estatein-inquiry-form input[type="text"],
+	.estatein-inquiry-form input[type="email"],
+	.estatein-inquiry-form input[type="tel"],
+	.estatein-inquiry-form select {
+		min-height: 56px;
+	}
+
+	.estatein-inquiry-form textarea {
+		height: 120px;
+		min-height: 120px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.estatein-property-search-main {
+		width: min(800px, calc(100% - 80px));
+	}
+
+	.estatein-property-search-filters {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.estatein-property-search-filters .estatein-property-filter:last-child {
+		grid-column: 1 / -1;
+	}
+
+	.estatein-inquiry-fields {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.estatein-inquiry-form {
+		padding: 40px;
+	}
+}
+
+@media (max-width: 767px) {
+	.estatein-properties-hero {
+		padding: 55px 16px 90px !important;
+	}
+
+	.estatein-properties-hero .elementor-heading-title {
+		font-size: 30px;
+	}
+
+	.estatein-properties-hero-copy p {
+		font-size: 14px;
+	}
+
+	.estatein-property-search-section {
+		margin-top: -54px;
+		padding-inline: 16px !important;
+	}
+
+	.estatein-property-search-main {
+		grid-template-columns: 1fr;
+		width: 100%;
+		padding: 10px;
+		border-width: 4px;
+		border-radius: 10px;
+	}
+
+	.estatein-property-search-main input {
+		min-height: 58px;
+		padding: 0 10px;
+		font-size: 16px;
+	}
+
+	.estatein-property-search-main .estatein-button {
+		justify-content: center;
+		min-height: 56px;
+	}
+
+	.estatein-property-search-filters {
+		grid-template-columns: 1fr;
+		margin-top: 16px;
+		padding: 16px;
+	}
+
+	.estatein-property-search-filters .estatein-property-filter:last-child {
+		grid-column: auto;
+	}
+
+	.estatein-property-filter {
+		min-height: 56px;
+	}
+
+	.estatein-properties-listing {
+		padding-top: 80px !important;
+	}
+
+	.estatein-property-archive-card .estatein-property-tagline {
+		margin-bottom: 12px;
+		font-size: 12px;
+	}
+
+	.estatein-inquiry-form {
+		padding: 20px;
+	}
+
+	.estatein-inquiry-fields {
+		grid-template-columns: 1fr;
+		gap: 24px;
+	}
+
+	.estatein-inquiry-field-wide,
+	.estatein-inquiry-field-full {
+		grid-column: auto;
+	}
+
+	.estatein-inquiry-field > label,
+	.estatein-inquiry-field > p > label {
+		margin-bottom: 10px;
+		font-size: 16px;
+	}
+
+	.estatein-inquiry-form input[type="text"],
+	.estatein-inquiry-form input[type="email"],
+	.estatein-inquiry-form input[type="tel"],
+	.estatein-inquiry-form select,
+	.estatein-inquiry-form textarea {
+		min-height: 58px;
+		padding: 14px 16px;
+		font-size: 14px;
+	}
+
+	.estatein-inquiry-form textarea {
+		height: 120px;
+		min-height: 120px;
+	}
+
+	.estatein-inquiry-submit-row {
+		align-items: stretch;
+		flex-direction: column;
+		margin-top: 30px;
+	}
+
+	.estatein-inquiry-submit-row > p {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.estatein-inquiry-submit-row input[type="submit"] {
+		width: 100%;
 	}
 }

@@ -20,7 +20,7 @@ $footer_groups = array(
 	),
 	'estatein-footer-properties' => array(
 		'title' => __( 'Properties', 'estatein' ),
-		'items' => array( 'Portfolio' => '#featured-properties', 'Categories' => '#featured-properties' ),
+		'items' => array( 'Portfolio' => '/properties/', 'Categories' => '/properties/' ),
 	),
 	'estatein-footer-services' => array(
 		'title' => __( 'Services', 'estatein' ),
@@ -80,4 +80,3 @@ $footer_groups = array(
 <?php wp_footer(); ?>
 </body>
 </html>
-
