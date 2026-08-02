@@ -187,3 +187,28 @@ function estatein_faqs_shortcode( $attributes ) {
 }
 add_shortcode( 'estatein_faqs', 'estatein_faqs_shortcode' );
 
+/**
+ * Render an Elementor saved template from a shortcode widget.
+ *
+ * Elementor Free keeps the section editable in the Saved Templates screen,
+ * while this shortcode lets multiple pages share the same live section.
+ *
+ * @param array $attributes Shortcode attributes.
+ * @return string
+ */
+function estatein_elementor_template_shortcode( $attributes ) {
+	$attributes  = shortcode_atts( array( 'id' => 0 ), $attributes, 'estatein_elementor_template' );
+	$template_id = absint( $attributes['id'] );
+	$template    = $template_id ? get_post( $template_id ) : null;
+
+	if ( ! $template || 'elementor_library' !== $template->post_type || 'publish' !== $template->post_status ) {
+		return '';
+	}
+
+	if ( ! class_exists( '\Elementor\Plugin' ) || ! isset( \Elementor\Plugin::$instance->frontend ) ) {
+		return '';
+	}
+
+	return \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id, true );
+}
+add_shortcode( 'estatein_elementor_template', 'estatein_elementor_template_shortcode' );

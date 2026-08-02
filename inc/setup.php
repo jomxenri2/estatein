@@ -104,7 +104,7 @@ function estatein_primary_menu_fallback() {
 	<ul class="estatein-nav-list">
 		<li class="current-menu-item"><a href="<?php echo esc_url( $home ); ?>"><?php esc_html_e( 'Home', 'estatein' ); ?></a></li>
 		<li><a href="<?php echo esc_url( $home . '#testimonials' ); ?>"><?php esc_html_e( 'About Us', 'estatein' ); ?></a></li>
-		<li><a href="<?php echo esc_url( $home . '#featured-properties' ); ?>"><?php esc_html_e( 'Properties', 'estatein' ); ?></a></li>
+		<li><a href="<?php echo esc_url( home_url( '/properties/' ) ); ?>"><?php esc_html_e( 'Properties', 'estatein' ); ?></a></li>
 		<li><a href="<?php echo esc_url( $home . '#services' ); ?>"><?php esc_html_e( 'Services', 'estatein' ); ?></a></li>
 	</ul>
 	<?php
@@ -120,7 +120,8 @@ function estatein_footer_menu_fallback( $items ) {
 	?>
 	<ul class="estatein-footer-menu">
 		<?php foreach ( $items as $label => $anchor ) : ?>
-			<li><a href="<?php echo esc_url( $home . $anchor ); ?>"><?php echo esc_html( $label ); ?></a></li>
+			<?php $url = 0 === strpos( $anchor, '/' ) ? home_url( $anchor ) : $home . $anchor; ?>
+			<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
 		<?php endforeach; ?>
 	</ul>
 	<?php
